@@ -1,0 +1,6 @@
+@Bank_tech_gateaway_HostAddress = http://localhost:5018
+
+GET {{Bank_tech_gateaway_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
