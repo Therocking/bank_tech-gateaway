@@ -32,3 +32,4 @@ C:\Users\Jose A. Genao\Desktop\proyects\Bank_tech-gateaway\Bank_tech-gateaway\ob
 C:\Users\Jose A. Genao\Desktop\proyects\Bank_tech-gateaway\Bank_tech-gateaway\obj\Debug\net8.0\Bank_tech-gateaway.pdb
 C:\Users\Jose A. Genao\Desktop\proyects\Bank_tech-gateaway\Bank_tech-gateaway\obj\Debug\net8.0\Bank_tech-gateaway.genruntimeconfig.cache
 C:\Users\Jose A. Genao\Desktop\proyects\Bank_tech-gateaway\Bank_tech-gateaway\obj\Debug\net8.0\ref\Bank_tech-gateaway.dll
+C:\Users\Jose A. Genao\Desktop\proyects\Bank_tech-gateaway\Bank_tech-gateaway\obj\Debug\net8.0\Bank_tech-gateaway.sourcelink.json
