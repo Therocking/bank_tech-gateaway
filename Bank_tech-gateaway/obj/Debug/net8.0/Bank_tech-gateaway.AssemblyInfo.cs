@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bank_tech-gateaway")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+257512e1ef249f6eaa52d14abb078cb05677d3ea")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bac8b5b01e284e278f28c911f05b8ce415a2eb28")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bank_tech-gateaway")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bank_tech-gateaway")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
