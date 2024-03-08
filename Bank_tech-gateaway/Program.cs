@@ -1,6 +1,10 @@
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddReverseProxy()
-    .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
+    .LoadFromConfig(builder.Configuration.GetSection("LansProxy"))
+    .LoadFromConfig(builder.Configuration.GetSection("SavingsProxy"))
+    .LoadFromConfig(builder.Configuration.GetSection("CustomersProxy"))
+    .LoadFromConfig(builder.Configuration.GetSection("CreditCardsProxy"));
+    //.AddConfigFilter<CustomConfigFilter>();
 
 // Add services to the container.
 
