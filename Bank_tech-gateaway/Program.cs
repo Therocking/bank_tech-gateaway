@@ -1,7 +1,9 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.RateLimiting;
 using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
@@ -13,6 +15,7 @@ builder.Services.AddReverseProxy()
     .LoadFromConfig(builder.Configuration.GetSection("CreditCardsProxy"))
     .LoadFromConfig(builder.Configuration.GetSection("UsersProxy"));
 
+/*Auth*/
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("RequireAuthenticatedUser", policy =>
@@ -37,6 +40,18 @@ builder.Services.AddAuthentication("Bearer").AddJwtBearer(opt =>
     };
 });
 
+/*Rate limiting*/
+builder.Services.AddRateLimiter(options =>
+{
+    options.AddFixedWindowLimiter("limitPolicy", opt =>
+    {
+        opt.PermitLimit = 4;
+        opt.Window = TimeSpan.FromSeconds(12);
+        opt.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+        opt.QueueLimit = 2;
+    });
+});
+
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -48,6 +63,8 @@ var app = builder.Build();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.UseRateLimiter();
 
 app.MapReverseProxy();
 
