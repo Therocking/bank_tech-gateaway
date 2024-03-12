@@ -33,3 +33,11 @@ C:\Users\Jose A. Genao\Desktop\proyects\Bank_tech-gateaway\Bank_tech-gateaway\ob
 C:\Users\Jose A. Genao\Desktop\proyects\Bank_tech-gateaway\Bank_tech-gateaway\obj\Debug\net8.0\Bank_tech-gateaway.genruntimeconfig.cache
 C:\Users\Jose A. Genao\Desktop\proyects\Bank_tech-gateaway\Bank_tech-gateaway\obj\Debug\net8.0\ref\Bank_tech-gateaway.dll
 C:\Users\Jose A. Genao\Desktop\proyects\Bank_tech-gateaway\Bank_tech-gateaway\obj\Debug\net8.0\Bank_tech-gateaway.sourcelink.json
+C:\Users\Jose A. Genao\Desktop\proyects\Bank_tech-gateaway\Bank_tech-gateaway\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Jose A. Genao\Desktop\proyects\Bank_tech-gateaway\Bank_tech-gateaway\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Jose A. Genao\Desktop\proyects\Bank_tech-gateaway\Bank_tech-gateaway\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Jose A. Genao\Desktop\proyects\Bank_tech-gateaway\Bank_tech-gateaway\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Jose A. Genao\Desktop\proyects\Bank_tech-gateaway\Bank_tech-gateaway\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Jose A. Genao\Desktop\proyects\Bank_tech-gateaway\Bank_tech-gateaway\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Jose A. Genao\Desktop\proyects\Bank_tech-gateaway\Bank_tech-gateaway\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Jose A. Genao\Desktop\proyects\Bank_tech-gateaway\Bank_tech-gateaway\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
