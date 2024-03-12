@@ -15,6 +15,19 @@ builder.Services.AddReverseProxy()
     .LoadFromConfig(builder.Configuration.GetSection("CreditCardsProxy"))
     .LoadFromConfig(builder.Configuration.GetSection("UsersProxy"));
 
+/*CORS*/
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+        });
+});
+
+
 /*Auth*/
 builder.Services.AddAuthorization(options =>
 {
@@ -59,6 +72,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseCors("AllowAllOrigins");
 
 app.UseAuthentication();
 
