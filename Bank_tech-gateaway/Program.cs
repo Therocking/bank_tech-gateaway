@@ -10,7 +10,8 @@ builder.Services.AddReverseProxy()
     .LoadFromConfig(builder.Configuration.GetSection("LansProxy"))
     .LoadFromConfig(builder.Configuration.GetSection("SavingsProxy"))
     .LoadFromConfig(builder.Configuration.GetSection("CustomersProxy"))
-    .LoadFromConfig(builder.Configuration.GetSection("CreditCardsProxy"));
+    .LoadFromConfig(builder.Configuration.GetSection("CreditCardsProxy"))
+    .LoadFromConfig(builder.Configuration.GetSection("UsersProxy"));
 
 builder.Services.AddAuthorization(options =>
 {
