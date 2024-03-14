@@ -4,18 +4,15 @@ using System.Text;
 using System.Threading.RateLimiting;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Bank_tech_gateaway.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddReverseProxy()
-    .LoadFromConfig(builder.Configuration.GetSection("LansProxy"))
-    .LoadFromConfig(builder.Configuration.GetSection("SavingsProxy"))
-    .LoadFromConfig(builder.Configuration.GetSection("CustomersProxy"))
-    .LoadFromConfig(builder.Configuration.GetSection("CreditCardsProxy"))
-    .LoadFromConfig(builder.Configuration.GetSection("UsersProxy"));
 
-/*CORS*/
+builder.Services.AddProxyConfig(builder.Configuration);
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",
@@ -27,31 +24,7 @@ builder.Services.AddCors(options =>
         });
 });
 
-
-/*Auth*/
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("RequireAuthenticatedUser", policy =>
-    {
-        policy.RequireAuthenticatedUser();
-    });
-});
-
-builder.Services.AddAuthentication("Bearer").AddJwtBearer(opt =>
-{
-    var jwtSettingsSection = builder.Configuration.GetSection("JwtSettings");
-    var signKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettingsSection["Key"]!));
-    var singCredencial = new SigningCredentials(signKey, SecurityAlgorithms.HmacSha256Signature);
-
-    opt.RequireHttpsMetadata = false;
-
-    opt.TokenValidationParameters = new TokenValidationParameters()
-    {
-        ValidateAudience = false,
-        ValidateIssuer = false,
-        IssuerSigningKey = signKey
-    };
-});
+builder.Services.AddAuthConfig(builder.Configuration);
 
 /*Rate limiting*/
 builder.Services.AddRateLimiter(options =>
@@ -65,9 +38,8 @@ builder.Services.AddRateLimiter(options =>
     });
 });
 
-// Add services to the container.
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
