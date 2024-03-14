@@ -15,9 +15,16 @@ namespace Bank_tech_gateaway.Services
                 .LoadFromConfig(_config.GetSection("CustomersProxy"))
                 .LoadFromConfig(_config.GetSection("CreditCardsProxy"))
                 .LoadFromConfig(_config.GetSection("UsersProxy"))
-                .AddTransforms(builder =>
+                .AddTransforms(builderContext =>
                 {
-                    // TODO: Set token in headers on routes users, header: Authorization: {token}
+                    // Agregar transformador para rutas que coincidan con "/gateaway-users"
+                    if (builderContext.Route?.Match.Path.Equals("/gateaway-users/login") == true)
+                    {
+                        builderContext.AddResponseTransform(async transformContext =>
+                        {
+                            transformContext.ProxyResponse.Headers.Add("header2", "bar");
+                        });
+                    }
                 });
 
             return services;
