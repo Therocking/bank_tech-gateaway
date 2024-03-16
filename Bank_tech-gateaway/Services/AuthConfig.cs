@@ -18,16 +18,18 @@ namespace Bank_tech_gateaway.Services
             services.AddAuthentication("Bearer").AddJwtBearer(opt =>
             {
                 var jwtSettingsSection = _config.GetSection("JwtSettings");
-                var signKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettingsSection["Key"]!));
-                var singCredencial = new SigningCredentials(signKey, SecurityAlgorithms.HmacSha256Signature);
+                var key = jwtSettingsSection["Key"];
+
+                var signigKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+                var credencials = new SigningCredentials(signigKey, SecurityAlgorithms.HmacSha256Signature);
 
                 opt.RequireHttpsMetadata = false;
 
-                opt.TokenValidationParameters = new TokenValidationParameters()
+                opt.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateAudience = false,
                     ValidateIssuer = false,
-                    IssuerSigningKey = signKey
+                    IssuerSigningKey = signigKey
                 };
             });
 
