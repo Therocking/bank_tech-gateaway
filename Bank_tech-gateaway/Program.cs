@@ -1,8 +1,14 @@
 using System.Threading.RateLimiting;
 using Microsoft.AspNetCore.RateLimiting;
 using Bank_tech_gateaway.Services;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthConfig(builder.Configuration);
 
 builder.Services.AddProxyConfig(builder.Configuration);
 
@@ -17,9 +23,7 @@ builder.Services.AddCors(options =>
         });
 });
 
-builder.Services.AddAuthConfig(builder.Configuration);
-
-/*builder.Services.AddRateLimiter(options =>
+builder.Services.AddRateLimiter(options =>
 {
     options.AddFixedWindowLimiter("limitPolicy", opt =>
     {
@@ -28,7 +32,7 @@ builder.Services.AddAuthConfig(builder.Configuration);
         opt.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
         opt.QueueLimit = 2;
     });
-});*/
+});
 
 builder.Services.AddControllers();
 
